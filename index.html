@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="display: none;">
+    <div id="setTimeContainer">
+        
+    </div>
+    <h1>設置時鐘</h1>
+        <label>年</label>
+        <select size="1" id="year"></select>
+
+        <label style="margin-left: 50px;">月</label>
+        <select id="month"></select>
+
+        <label style="margin-left: 50px;">日</label>
+        <select id="day"></select>
+
+        <label style="margin-left: 50px;">小時</label>
+        <select id="hour"></select>
+
+        <label style="margin-left: 50px;">分鐘</label>
+        <select id="min"></select>
+
+        <button>確認</button>
+        <br><br>
+        <span>時間尚未選擇</span>
+
+    <div></div>
+    <script src="script.js" type="module"></script>
+    <script>
+        document.body.style.display = "block";
+    </script>
+</body>
+</html>
