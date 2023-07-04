@@ -1,0 +1,33 @@
+@charset "UTF-8";
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+}
+select {
+    height: 30px;
+    width: 100px;
+}
+span {
+    font-size: 30px;
+    color: red;
+}
+button {
+    margin-left: 50px;
+    height: 40px;
+    min-width: 70px;
+    border: 1px black solid;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-size: large;
+}
+button:hover{
+    background-color: white;
+    color: black;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
