@@ -1,9 +1,9 @@
-import {elt} from "../../module/elt.js";
 import * as DOM from "./dom.js";
 
+let startClock;
 let audio = new Audio("clock.mp3");
 audio.canPlayType("audio/mp3");
-audio.volume = .2
+audio.volume = .2  //初始化音量
 
 
 const loadTime = new Date();
@@ -54,8 +54,21 @@ addOption(DOM.selectYear, loadTime.getFullYear(), loadTime.getFullYear() + 1).jo
 addOption(DOM.selectMonth, 1, 12);
 addOption(DOM.selectDay, 1, loadLimitDay);
 addOption(DOM.selectHour, 1, 23);
-addOption(DOM.selectMin, 1, 59);
+addOption(DOM.selectMin, 0, 59);
 
+elt("p", {})
+function elt(name, attrs, ...children) {
+    let dom = document.createElement(name);
+    if (attrs) {
+        if (Object.keys(attrs)[0]) Object.assign(dom, attrs)
+    };
+
+    for (let child of children) {
+        if (typeof child != "string") dom.appendChild(child);
+        else dom.appendChild(document.createTextNode(child));
+    }
+    return dom;
+}
 function addOption(parent, start, end) {
     let element = [];
     for (let i = start; i <= end; i++) {
@@ -73,8 +86,21 @@ function checkInput() {
 }
 function startTimer() {
     DOM.spanHelp.innerHTML = '時間已選擇  <p style="font-size: 35px; display: inline-block">☑</p>';
-    setTimeout(() => {
-        audio.play();
-    }, new Date(DOM.selectYear.selectedIndex + 2023, DOM.selectMonth.selectedIndex, DOM.selectDay.selectedIndex + 1, DOM.selectHour.selectedIndex + 1, DOM.selectMin.selectedIndex + 1).getTime() - Date.now())
+    startClock = setTimeout(() => {
+        audio.play(); //play the clock
+    }, new Date(DOM.selectYear.selectedIndex + 2023, DOM.selectMonth.selectedIndex, DOM.selectDay.selectedIndex + 1, DOM.selectHour.selectedIndex + 1, DOM.selectMin.selectedIndex).getTime() - Date.now())
+}
+function reset() {
+    clearTimeout(startClock);
+    DOM.spanHelp.innerHTML = "時間尚未選擇";
+}
+function remindHour() {
+
+}
+function adjustVolume() {
+    audio.volume = Number(DOM.adjustVolume.value) / 100;
 }
 DOM.submitButton.addEventListener("click", checkInput, false);
+DOM.resetButton.addEventListener("click", reset, false);
+DOM.selectHour.addEventListener("focus", remindHour, false);
+DOM.adjustVolume.addEventListener("input", adjustVolume, false);
