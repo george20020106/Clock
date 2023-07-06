@@ -1,4 +1,16 @@
-import * as DOM from "./dom.js";
+const DOM = {
+    selectYear: document.querySelector("#year"),
+    selectMonth: document.querySelector("#month"),
+    selectDay: document.querySelector("#day"),
+    selectHour: document.querySelector("#hour"),
+    selectMin: document.querySelector("#min"),
+    spanHelp: document.querySelector("span"),
+    submitButton: document.querySelector("button"),
+    resetButton: document.getElementsByTagName("button")[1],
+    adjustVolumeInput: document.querySelector('input')
+}
+
+
 
 let startClock;
 let audio = new Audio("clock.mp3");
@@ -56,12 +68,10 @@ addOption(DOM.selectDay, 1, loadLimitDay);
 addOption(DOM.selectHour, 1, 23);
 addOption(DOM.selectMin, 0, 59);
 
-elt("p", {})
+
 function elt(name, attrs, ...children) {
     let dom = document.createElement(name);
-    if (attrs) {
-        if (Object.keys(attrs)[0]) Object.assign(dom, attrs)
-    };
+    if (attrs) Object.assign(dom, attrs);
 
     for (let child of children) {
         if (typeof child != "string") dom.appendChild(child);
@@ -103,4 +113,4 @@ function adjustVolume() {
 DOM.submitButton.addEventListener("click", checkInput, false);
 DOM.resetButton.addEventListener("click", reset, false);
 DOM.selectHour.addEventListener("focus", remindHour, false);
-DOM.adjustVolume.addEventListener("input", adjustVolume, false);
+DOM.adjustVolumeInput.addEventListener("input", adjustVolume, false);
