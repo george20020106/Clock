@@ -11,9 +11,7 @@
 </head>
 <body style="display: none;">
     <div id="setTimeContainer">
-        
-    </div>
-    <h1>設置時鐘</h1>
+        <h1>設置時鐘</h1>
         <label>年</label>
         <select size="1" id="year"></select>
 
@@ -30,11 +28,15 @@
         <select id="min"></select>
 
         <button>確認</button>
-        <br><br>
-        <span>時間尚未選擇</span>
-
+        <button>重設</button>
+        <span style="display: block;">時間尚未選擇</span>
+        <div id="volumeArea">
+            <h2 style="margin-top: 30px;">音量</h2>
+            <input type="range" style="margin-left: 70px; position: relative; top: -40px;" min="0" max="100" value="20">
+        </div>
+    </div>
     <div></div>
-    <script src="script.js" type="module"></script>
+    <script src="script.js"></script>
     <script>
         document.body.style.display = "block";
     </script>
