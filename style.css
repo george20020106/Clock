@@ -1,5 +1,7 @@
 @charset "UTF-8";
 body{
+    min-height: max-content;
+    min-width: auto;
     font-family: 'Noto Sans TC', sans-serif;
 }
 select {
@@ -25,9 +27,11 @@ button:hover{
     background-color: white;
     color: black;
 }
-.hide{
-    display: none;
-}
-.show{
-    display: block;
+#volumeArea {
+    width: 230px;
+    padding-left: 25px;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-bottom: 50px;
 }
